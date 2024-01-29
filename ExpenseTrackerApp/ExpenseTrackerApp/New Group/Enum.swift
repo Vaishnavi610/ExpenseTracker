@@ -25,3 +25,38 @@ enum selectedTabs {
     case statistics
     case profile
 }
+
+
+enum categories{
+    
+    case cafe
+    case food
+    case movie
+    case carInsuarnce
+    case transport
+    case house
+    case game
+    case entertainment
+    
+    var imageName : String {
+        switch self {
+        case .cafe:
+            return "cafe"
+        case .food:
+            return "food"
+        case .movie:
+            return "movie"
+        case .carInsuarnce:
+            return "carInsurance"
+        case .transport:
+            return "cab"
+        case .house:
+            return "house"
+        case .game:
+            return "game"
+        case .entertainment:
+            return "entertainment"
+        }
+    }
+    
+}

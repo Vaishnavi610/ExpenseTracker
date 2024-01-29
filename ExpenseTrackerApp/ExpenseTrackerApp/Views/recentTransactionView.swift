@@ -9,7 +9,11 @@ import SwiftUI
 
 struct recentTransactionView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Image(categories.cafe.imageName)
+                .resizable()
+                .frame(width: 40, height: 40)
+        }
     }
 }
 

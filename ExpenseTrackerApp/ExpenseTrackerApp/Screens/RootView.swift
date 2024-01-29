@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct RootView: View {
+    
+    @State var selectedTabs : selectedTabs = .home
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            
+            switch selectedTabs {
+            case .home:
+                HomePage()
+            case .transactions:
+                TransactionPage()
+            case .newTransactions:
+                newTransactionPage()
+            case .statistics:
+                statisticsPage()
+            case .profile:
+                ProfilePage()
+            }
+            
+            CustomeTabBar(selectedTab: $selectedTabs)
+                .padding(.top, UIScreen.main.bounds.height - 120)
+        }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 

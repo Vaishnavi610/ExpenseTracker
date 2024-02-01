@@ -13,6 +13,21 @@
 		CE05A9262B678A5E006FC26F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE05A9252B678A5E006FC26F /* Preview Assets.xcassets */; };
 		CE05A9282B678A5E006FC26F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE05A9272B678A5E006FC26F /* Persistence.swift */; };
 		CE05A92B2B678A5E006FC26F /* TaskManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE05A9292B678A5E006FC26F /* TaskManagementApp.xcdatamodeld */; };
+		CE4F5CCD2B6B6AAC00250AF9 /* homeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CCC2B6B6AAC00250AF9 /* homeView.swift */; };
+		CE4F5CD62B6B6AC800250AF9 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CCF2B6B6AC800250AF9 /* Montserrat-Medium.ttf */; };
+		CE4F5CD72B6B6AC800250AF9 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CD02B6B6AC800250AF9 /* Montserrat-Light.ttf */; };
+		CE4F5CD82B6B6AC800250AF9 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CD12B6B6AC800250AF9 /* Montserrat-ExtraLight.ttf */; };
+		CE4F5CD92B6B6AC800250AF9 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CD22B6B6AC800250AF9 /* Montserrat-Bold.ttf */; };
+		CE4F5CDA2B6B6AC800250AF9 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CD32B6B6AC800250AF9 /* Montserrat-SemiBold.ttf */; };
+		CE4F5CDB2B6B6AC800250AF9 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CD42B6B6AC800250AF9 /* Montserrat-ExtraBold.ttf */; };
+		CE4F5CDC2B6B6AC800250AF9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE4F5CD52B6B6AC800250AF9 /* Montserrat-Regular.ttf */; };
+		CE4F5CDF2B6B6AE600250AF9 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CDE2B6B6AE600250AF9 /* TaskView.swift */; };
+		CE4F5CE42B6B6AED00250AF9 /* viewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CE12B6B6AED00250AF9 /* viewExtension.swift */; };
+		CE4F5CE52B6B6AED00250AF9 /* colorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CE22B6B6AED00250AF9 /* colorExtension.swift */; };
+		CE4F5CE62B6B6AED00250AF9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CE32B6B6AED00250AF9 /* DateExtension.swift */; };
+		CE4F5CE82B6B6B0200250AF9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CE72B6B6B0200250AF9 /* Enums.swift */; };
+		CE4F5CEA2B6B6B3000250AF9 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CE92B6B6B3000250AF9 /* TaskModel.swift */; };
+		CE4F5CEC2B6B6B4900250AF9 /* offsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4F5CEB2B6B6B4900250AF9 /* offsetKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +38,22 @@
 		CE05A9252B678A5E006FC26F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE05A9272B678A5E006FC26F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CE05A92A2B678A5E006FC26F /* TaskManagementApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskManagementApp.xcdatamodel; sourceTree = "<group>"; };
+		CE4F5CCC2B6B6AAC00250AF9 /* homeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeView.swift; sourceTree = "<group>"; };
+		CE4F5CCF2B6B6AC800250AF9 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		CE4F5CD02B6B6AC800250AF9 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		CE4F5CD12B6B6AC800250AF9 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		CE4F5CD22B6B6AC800250AF9 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		CE4F5CD32B6B6AC800250AF9 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		CE4F5CD42B6B6AC800250AF9 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		CE4F5CD52B6B6AC800250AF9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		CE4F5CDE2B6B6AE600250AF9 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		CE4F5CE12B6B6AED00250AF9 /* viewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = viewExtension.swift; sourceTree = "<group>"; };
+		CE4F5CE22B6B6AED00250AF9 /* colorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colorExtension.swift; sourceTree = "<group>"; };
+		CE4F5CE32B6B6AED00250AF9 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		CE4F5CE72B6B6B0200250AF9 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CE4F5CE92B6B6B3000250AF9 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		CE4F5CEB2B6B6B4900250AF9 /* offsetKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offsetKey.swift; sourceTree = "<group>"; };
+		CE4F5CED2B6B6B6000250AF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				CE05A91D2B678A5B006FC26F /* TaskManagementApp */,
+				CE4F5CCE2B6B6AC800250AF9 /* Fonts */,
 				CE05A91C2B678A5B006FC26F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,12 +87,16 @@
 		CE05A91D2B678A5B006FC26F /* TaskManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE4F5CED2B6B6B6000250AF9 /* Info.plist */,
+				CE4F5CE72B6B6B0200250AF9 /* Enums.swift */,
+				CE4F5CE02B6B6AED00250AF9 /* Extensions */,
 				CE05A91E2B678A5B006FC26F /* TaskManagementAppApp.swift */,
 				CE05A9202B678A5B006FC26F /* ContentView.swift */,
 				CE05A9222B678A5E006FC26F /* Assets.xcassets */,
 				CE05A9272B678A5E006FC26F /* Persistence.swift */,
 				CE05A9292B678A5E006FC26F /* TaskManagementApp.xcdatamodeld */,
 				CE05A9242B678A5E006FC26F /* Preview Content */,
+				CE4F5CCC2B6B6AAC00250AF9 /* homeView.swift */,
 			);
 			path = TaskManagementApp;
 			sourceTree = "<group>";
@@ -71,6 +107,41 @@
 				CE05A9252B678A5E006FC26F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE4F5CCE2B6B6AC800250AF9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE4F5CCF2B6B6AC800250AF9 /* Montserrat-Medium.ttf */,
+				CE4F5CD02B6B6AC800250AF9 /* Montserrat-Light.ttf */,
+				CE4F5CD12B6B6AC800250AF9 /* Montserrat-ExtraLight.ttf */,
+				CE4F5CD22B6B6AC800250AF9 /* Montserrat-Bold.ttf */,
+				CE4F5CD32B6B6AC800250AF9 /* Montserrat-SemiBold.ttf */,
+				CE4F5CD42B6B6AC800250AF9 /* Montserrat-ExtraBold.ttf */,
+				CE4F5CD52B6B6AC800250AF9 /* Montserrat-Regular.ttf */,
+				CE4F5CDD2B6B6AE600250AF9 /* Views */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CE4F5CDD2B6B6AE600250AF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE4F5CEB2B6B6B4900250AF9 /* offsetKey.swift */,
+				CE4F5CE92B6B6B3000250AF9 /* TaskModel.swift */,
+				CE4F5CDE2B6B6AE600250AF9 /* TaskView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE4F5CE02B6B6AED00250AF9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE4F5CE12B6B6AED00250AF9 /* viewExtension.swift */,
+				CE4F5CE22B6B6AED00250AF9 /* colorExtension.swift */,
+				CE4F5CE32B6B6AED00250AF9 /* DateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +202,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4F5CDC2B6B6AC800250AF9 /* Montserrat-Regular.ttf in Resources */,
+				CE4F5CD72B6B6AC800250AF9 /* Montserrat-Light.ttf in Resources */,
 				CE05A9262B678A5E006FC26F /* Preview Assets.xcassets in Resources */,
+				CE4F5CD92B6B6AC800250AF9 /* Montserrat-Bold.ttf in Resources */,
+				CE4F5CDA2B6B6AC800250AF9 /* Montserrat-SemiBold.ttf in Resources */,
+				CE4F5CD62B6B6AC800250AF9 /* Montserrat-Medium.ttf in Resources */,
+				CE4F5CDB2B6B6AC800250AF9 /* Montserrat-ExtraBold.ttf in Resources */,
 				CE05A9232B678A5E006FC26F /* Assets.xcassets in Resources */,
+				CE4F5CD82B6B6AC800250AF9 /* Montserrat-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,8 +222,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE05A9282B678A5E006FC26F /* Persistence.swift in Sources */,
+				CE4F5CE42B6B6AED00250AF9 /* viewExtension.swift in Sources */,
+				CE4F5CE82B6B6B0200250AF9 /* Enums.swift in Sources */,
 				CE05A9212B678A5B006FC26F /* ContentView.swift in Sources */,
+				CE4F5CEA2B6B6B3000250AF9 /* TaskModel.swift in Sources */,
+				CE4F5CE52B6B6AED00250AF9 /* colorExtension.swift in Sources */,
+				CE4F5CE62B6B6AED00250AF9 /* DateExtension.swift in Sources */,
 				CE05A91F2B678A5B006FC26F /* TaskManagementAppApp.swift in Sources */,
+				CE4F5CDF2B6B6AE600250AF9 /* TaskView.swift in Sources */,
+				CE4F5CCD2B6B6AAC00250AF9 /* homeView.swift in Sources */,
+				CE4F5CEC2B6B6B4900250AF9 /* offsetKey.swift in Sources */,
 				CE05A92B2B678A5E006FC26F /* TaskManagementApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +369,7 @@
 				DEVELOPMENT_TEAM = ZL9DDXABC9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TaskManagementApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -312,6 +399,7 @@
 				DEVELOPMENT_TEAM = ZL9DDXABC9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TaskManagementApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -29,6 +29,10 @@ struct PersistenceController {
     }()
 
     let container: NSPersistentContainer
+    
+    var viewContext: NSManagedObjectContext {
+        return container.viewContext
+    }
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "TaskManagementApp")

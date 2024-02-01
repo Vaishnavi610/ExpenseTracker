@@ -46,3 +46,11 @@ enum themeColor {
     }
     
 }
+
+
+enum Field : Hashable{
+    case note
+    case taskName
+    case url
+    case none
+}

@@ -12,7 +12,7 @@ import SwiftUI
 extension Color{
     
     static let pinkLabel = Color(hex: "FB7FB3")
-    static let blackLabel = Color(hex: "000000")
+    static let blackLabel = Color(hex: "000000").opacity(0.8)
     static let skyBlueLabel = Color(hex: "76D3FB")
     static let purpleLabel = Color(hex: "7FB6F6")
     static let brownLabel = Color(hex: "8E4A24").opacity(0.8)

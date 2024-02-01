@@ -9,29 +9,29 @@ import SwiftUI
 
 struct TaskView: View {
     
-    @Binding var tasks : taskModel
+    @Binding var tasks : Tasks_data
     @Binding var timeDistance : Int
     
     var body: some View {
         HStack(alignment: .top, spacing: 15, content: {
             
-            Text("\(tasks.taskDate.format("HH : MM a"))")
+            Text("\(tasks.createddate?.format("HH : MM a") ?? "")")
                 .font(.custom(fontNames.semiBold.rawValue, size: 16))
-                .foregroundStyle(tasks.isCompleted ? Color.gray : Color.black)
+                .foregroundStyle(tasks.iscompletd ? Color.gray : Color.black)
                 .offset(y: 10)
             
              Circle()
                 .frame(width: 10, height: 10)
-                .foregroundStyle(tasks.isCompleted ? Color.gray : Color.black)
+                .foregroundStyle(tasks.iscompletd ? Color.gray : Color.black)
                 .offset(y: 10)
             HStack(spacing: 50){
                 
                 VStack(alignment: .leading, spacing: 10, content: {
-                    Text(tasks.taskName)
+                    Text(tasks.taskaname ?? "")
                         .font(.custom(fontNames.semiBold.rawValue, size: 16))
                         .foregroundStyle(Color.white)
                     
-                    Text(tasks.note)
+                    Text(tasks.note ?? "")
                         .font(.custom(fontNames.regular.rawValue, size: 12))
                         .foregroundStyle(Color.white)
                 })
@@ -44,10 +44,30 @@ struct TaskView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: 80)
-            .background( tasks.isCompleted ? Color.gray :  tasks.theme, in: .rect(cornerRadius: 10))
-            .shadow(color: Date.now.format("HH : MM a") == tasks.taskDate.format("HH : MM a") ? .gray : .clear, radius: 10, y: 10)
+            .background( tasks.iscompletd ? Color.gray : setColor(tasks.themefortask ?? "gray"), in: .rect(cornerRadius: 10))
+            .shadow(color: Date.now.format("HH : MM a") == tasks.createddate?.format("HH : MM a") ? .gray : .clear, radius: 10, y: 10)
         })
        
+    }
+    
+    func setColor (_ themeName : String) -> Color {
+        if themeName == "pinkLabel" {
+            return .pinkLabel
+        }else  if themeName == "blackLabel" {
+            return .blackLabel
+        }else  if themeName == "blueLabel" {
+            return .blueLabel
+        }else  if themeName == "brownLabel" {
+            return .brownLabel
+        }else  if themeName == "purpleLabel" {
+            return .purpleLabel
+        }else  if themeName == "redLabel" {
+            return .redLabel
+        }else  if themeName == "skyBlueLabel" {
+            return .skyBlueLabel
+        }else{
+            return .gray
+        }
     }
 }
 

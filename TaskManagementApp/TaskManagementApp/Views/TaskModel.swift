@@ -29,6 +29,8 @@ var sampleTask : [taskModel] = [
     .init(taskName: "Standup call", taskDate: Date.now, note: "Discuss regarding today’s task", alert: false, theme: .blackLabel, isCompleted: false),
     .init(taskName: "Meeting with client", taskDate: Date.now, note: "setup call before 11", alert: false, theme:.skyBlueLabel, isCompleted: false),
     .init(taskName: "Meeting with client", taskDate: Date.now, note: "", alert: false, theme: .purpleLabel, isCompleted: false),
-    .init(taskName: "Design Logo", taskDate: Date.now, note: "Do research on logo.", alert: false, theme: .pinkLabel, isCompleted: true)
+    .init(taskName: "Design Logo", taskDate: Date.now, note: "Do research on logo.", alert: false, theme: .pinkLabel, isCompleted: true),
+    .init(taskName: "Design Logo", taskDate: Date.now, note: "Do research on logo.", alert: false, theme: .pinkLabel, isCompleted: true),
+    .init(taskName: "Design Logo", taskDate: Date.now, note: "Do research on logo.", alert: false, theme: .brownLabel, isCompleted: true)
 
 ]

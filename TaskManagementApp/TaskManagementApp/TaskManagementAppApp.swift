@@ -13,8 +13,11 @@ struct TaskManagementAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            homeView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationStack {
+                homeView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
+            
         }
     }
 }

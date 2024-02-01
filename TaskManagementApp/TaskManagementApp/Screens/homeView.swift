@@ -12,54 +12,83 @@ struct homeView: View {
     @State var weekSlider : [[Date.weekDay]] = []
     @State var currentWeekIndex : Int = 1
     @State var selectedDate : Date = Date.now
+    
     @State var createWeek : Bool = false
+    @State var presentScreen : Bool = false
     
     @State var taskData : [taskModel] = sampleTask.sorted (by: { $0.taskDate > $1.taskDate})
      
     //Animation namespace
     @Namespace private var animation
     
+    @ObservedObject var viewModel = tasksViewModel()
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 20){
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Calendar")
-                    .font(.custom(fontNames.bold.rawValue, size: 28))
-                    .padding(.horizontal)
-                    .padding(.top, 10)
-                
-                //week slider
-                TabView(selection: $currentWeekIndex) {
-                    ForEach(weekSlider.indices, id : \.self) {
-                         index in
-                        let week = weekSlider[index]
-                        weekSliderView(week)
-                            .padding(.horizontal,10)
-                            .tag(index)
+        ZStack{
+            VStack(alignment: .leading, spacing: 20){
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Calendar")
+                        .font(.custom(fontNames.bold.rawValue, size: 28))
+                        .padding(.horizontal)
+                        .padding(.top, 10)
+                    
+                    //week slider
+                    TabView(selection: $currentWeekIndex) {
+                        ForEach(weekSlider.indices, id : \.self) {
+                            index in
+                            let week = weekSlider[index]
+                            weekSliderView(week)
+                                .padding(.horizontal,10)
+                                .tag(index)
+                            
+                        }
+                    }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .frame(height: 100)
+                    .background {
+                        Rectangle()
+                            .frame(width: UIScreen.main.bounds.width, height: 120)
+                            .foregroundStyle(Color(hex: "D6E7EB"))
                         
                     }
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .frame(height: 100)
-                .background {
-                    Rectangle()
-                        .frame(width: UIScreen.main.bounds.width, height: 120)
-                        .foregroundStyle(Color(hex: "D6E7EB"))
-                    
+                .frame(maxWidth: .infinity)
+                .onChange(of: currentWeekIndex, initial: false) { oldValue, newValue in
+                    if newValue == 0 || newValue == (weekSlider.count - 1) {
+                        createWeek = true
+                    }
+                }
+                
+                Text("Today's Tasks")
+                    .font(.custom(fontNames.semiBold.rawValue, size: 22))
+                    .padding(.horizontal)
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    TaskViewFunc()
+                        .padding(.vertical)
+                        .padding(.horizontal, 10)
                 }
             }
-            .frame(maxWidth: .infinity)
             
-            Text("Today's Tasks")
-                .font(.custom(fontNames.semiBold.rawValue, size: 22))
-                .padding(.horizontal)
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                TaskViewFunc()
-                    .padding(.vertical)
+            Button {
+                presentScreen = true
+            } label: {
+                Image(systemName: "plus")
+                    .resizable()
+                    .frame(width: 35, height: 35)
+                    .foregroundStyle(Color.white)
+                    .background{
+                        Circle()
+                            .frame(width: 70, height: 70)
+                            .foregroundStyle(Color.black)
+                            .shadow(color: .black.opacity(0.6), radius: 5, y: 5)
+                    }
             }
-            .padding(.horizontal)
+            .offset(x: 120 ,y: 320)
+
         }
         .onAppear(perform: {
+            viewModel.fetchData()
             if weekSlider.isEmpty {
                 let currentWeek = Date().fetchWeek()
                 if let firstDate = currentWeek.first?.date {
@@ -73,11 +102,12 @@ struct homeView: View {
             }
             
         })
-        .onChange(of: currentWeekIndex, initial: false) { oldValue, newValue in
-            if newValue == 0 || newValue == (weekSlider.count - 1) {
-                createWeek = true
-            }
-        }
+        .sheet(isPresented: $presentScreen, onDismiss: {
+            viewModel.fetchData()
+        },content: {
+            newTaskScreen()
+                .presentationDetents([.large])
+        })
        
     }
     
@@ -110,7 +140,7 @@ struct homeView: View {
                             .frame(width: 50, height: 90)
                             .cornerRadius(20)
                             .foregroundStyle(Color.blackLabel)
-//                            .matchedGeometryEffect(id: "TABINDICATOR", in: animation)
+                            .matchedGeometryEffect(id: "TABINDICATOR", in: animation)
                     }
                 }
                 .onTapGesture {
@@ -158,18 +188,17 @@ struct homeView: View {
     func TaskViewFunc() -> some View {
         
         VStack(alignment: .leading, spacing: 30, content: {
-            ForEach($taskData.indices, id: \.self) { item in
-                TaskView(tasks: $taskData[item], timeDistance: .constant(1))
+            
+            ForEach(viewModel.userTasksData.indices, id: \.self) { element in
+                TaskView(tasks: $viewModel.userTasksData[element], timeDistance: .constant(1))
                     .overlay {
-                        if !(item == taskData.count - 1) {
+                        if !(element == viewModel.userTasksData.count - 1) {
                             RoundedRectangle(cornerRadius: 20)
                                 .frame(width: 2, height: 90)
-                                .offset(x: -83, y: 30)
+                                .offset(x: -87, y: 30)
                                 .foregroundStyle(Color.black)
                         }
-                        
                     }
-                
             }
             
         })

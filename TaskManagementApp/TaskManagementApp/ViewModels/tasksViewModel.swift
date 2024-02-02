@@ -40,5 +40,25 @@ class tasksViewModel : ObservableObject {
         }
     }
     
+    func updateIsComplete (_ task : Tasks_data, isCompleted : Bool,completionHandler : @escaping (_ success : Bool)-> Void){
+        tasksDataHelper.shared.markAsComplete(task, isCompleted: isCompleted, viewContext) { success in
+            if success {
+                completionHandler(true)
+            }else{
+                completionHandler(false)
+            }
+        }
+    }
+    
+    func deleteTask (_ task : Tasks_data,completionHandler : @escaping (_ success : Bool)-> Void) {
+        tasksDataHelper.shared.deleteTasks(task, viewContext) { success in
+            if success{
+                completionHandler(true)
+            }else{
+                completionHandler(false)
+            }
+        }
+    }
+    
     
 }

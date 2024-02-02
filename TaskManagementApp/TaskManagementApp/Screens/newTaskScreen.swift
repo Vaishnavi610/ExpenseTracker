@@ -22,6 +22,8 @@ struct newTaskScreen: View {
     @State var isCompleted : Bool = false
     @State var alertOn : Bool = false
     
+    @State var selectedIndex : Int = 0
+    
     @FocusState private var focusField: Field?
     
     @StateObject var viewModel = tasksViewModel()
@@ -31,15 +33,8 @@ struct newTaskScreen: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(spacing: 40){
-                VStack(spacing: 15){
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(width: 51, height: 4, alignment: .center)
-                        .foregroundStyle(Color.gray.opacity(0.6))
-                    
-                    
-                    Text("New Task")
-                        .font(.custom(fontNames.medium.rawValue, size: 24))
-                }
+                Text("New Task")
+                    .font(.custom(fontNames.medium.rawValue, size: 24))
                 
                 VStack(alignment: .leading){
                     Text("Task Title")
@@ -47,15 +42,18 @@ struct newTaskScreen: View {
                     
                     TextField("Add title to your task.", text: $title)
                         .font(.custom(fontNames.regular.rawValue, size: 16))
+                        .focused($focusField, equals: .taskName)
                     
                 }.padding(.horizontal, 10)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                        .foregroundStyle(Color.clear)
-                }
-                
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .foregroundStyle(Color.clear)
+                    }
+                    .onTapGesture {
+                        focusField = .taskName
+                    }
                 
                 HStack{
                     Text("Schedule on")
@@ -63,12 +61,12 @@ struct newTaskScreen: View {
                     
                     DatePicker("", selection: $selectScheduleDate, displayedComponents: [.date, .hourAndMinute])
                 }.padding(.horizontal, 10)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                        .foregroundStyle(Color.clear)
-                }
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .foregroundStyle(Color.clear)
+                    }
                 
                 HStack{
                     Text("Due date")
@@ -76,12 +74,12 @@ struct newTaskScreen: View {
                     
                     DatePicker("", selection: $selectDueDate, displayedComponents: [.date, .hourAndMinute])
                 }.padding(.horizontal, 10)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                        .foregroundStyle(Color.clear)
-                }
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .foregroundStyle(Color.clear)
+                    }
                 
                 VStack(alignment: .leading){
                     Text("Note")
@@ -89,22 +87,33 @@ struct newTaskScreen: View {
                     
                     TextField("Add some note about tasks..", text: $note, axis: .vertical)
                         .font(.custom(fontNames.regular.rawValue, size: 16))
+                        .focused($focusField, equals: .note)
                     
                 }.padding(.horizontal, 10)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                        .foregroundStyle(Color.clear)
-                }
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .foregroundStyle(Color.clear)
+                    }
+                    .onTapGesture {
+                        focusField = .note
+                    }
                 
                 HStack(alignment: .center, spacing: 10){
                     Text("Repeat")
                         .font(.custom(fontNames.regular.rawValue, size: 16))
+                    
                     Spacer()
-                 
-                        Text(repeatedValue)
-                            .font(.custom(fontNames.regular.rawValue, size: 16))
+                    
+                    Picker("", selection: $repeatedValue) {
+                        ForEach(repeatValueArray, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .tint(Color.black)
+
                 }
                 .padding(.horizontal, 10)
                 .background {
@@ -160,9 +169,14 @@ struct newTaskScreen: View {
                         Text("Alert")
                             .font(.custom(fontNames.regular.rawValue, size: 16))
                         Spacer()
-                     
-                            Text(repeatedValue)
-                                .font(.custom(fontNames.regular.rawValue, size: 16))
+                        
+                        Picker("", selection: $seletctedAlertValue) {
+                            ForEach(alertValueArray, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        .pickerStyle(.menu)
+
                     }
                     .padding(.horizontal, 10)
                     .background {
@@ -171,7 +185,7 @@ struct newTaskScreen: View {
                             .frame(width: UIScreen.main.bounds.width - 20, height: 60)
                             .foregroundStyle(Color.clear)
                     }
-
+                    
                 }
                 
                 VStack(alignment: .leading){
@@ -180,19 +194,23 @@ struct newTaskScreen: View {
                     
                     TextField("", text: $seletctedUrl)
                         .font(.custom(fontNames.regular.rawValue, size: 16))
+                        .focused($focusField, equals: .url)
                     
-                }.padding(.horizontal, 10)
+                }
+                .padding(.horizontal, 10)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke( Color.black ,style: StrokeStyle(lineWidth: 0.5))
                         .frame(width: UIScreen.main.bounds.width - 20, height: 60)
                         .foregroundStyle(Color.clear)
                 }
+                .onTapGesture {
+                    focusField = .url
+                }
                 
                 Button {
-                   
-                    if title != "" && note != ""  {
-                        viewModel.crateTasks(taksName: title, note: note, createdDate: selectScheduleDate, dueDate: selectDueDate, isCompleted: isCompleted, setAlram: alertOn, alertValue: seletctedAlertValue, repeatValue: repeatedValue, urlAttachment: seletctedUrl) { result in
+                    if title != "" {
+                        viewModel.crateTasks(taksName: title, note: note, createdDate: selectScheduleDate, dueDate: selectDueDate, isCompleted: isCompleted, setAlram: alertOn, alertValue: seletctedAlertValue, repeatValue: repeatedValue, urlAttachment: seletctedUrl, selecteTheme: seletctedTheme) { result in
                             if result{
                                 dismiss()
                             }
@@ -210,9 +228,7 @@ struct newTaskScreen: View {
                                 .frame(width: 273, height: 60)
                                 .foregroundStyle(Color.black)
                         }
-                }
-
-                
+                }                
             }
             .padding(.horizontal)
             .padding(.top, 20)
@@ -226,17 +242,28 @@ struct newTaskScreen: View {
     func themeBar () -> some View{
         HStack(alignment: .center, spacing: 20, content: {
             ForEach(viewModel.themeColorArray.indices, id: \.self) { element in
-                Circle()
-                    .fill(Color(viewModel.themeColorArray[element]))
-                    .frame(width: 30, height: 30)
-                    .shadow(color: .black.opacity(0.25), radius: 5, y: 5)
+                ZStack{
+                    if selectedIndex == element {
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 40, height: 40)
+                            .shadow(color: .black.opacity(0.25), radius: 5, y: 5)
+                    }
+                    Circle()
+                        .fill(Color(viewModel.themeColorArray[element].colorString))
+                        .frame(width: 30, height: 30)
+                        .shadow(color: .black.opacity(0.25), radius: 5, y: 5)
+                    
+                }
+                .onTapGesture {
+                    selectedIndex = element
+                    seletctedTheme = viewModel.themeColorArray[element].colorValue
+                }
                   
             }
             
         })
     }
-    
-   
     
 }
 

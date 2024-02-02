@@ -15,13 +15,16 @@ struct homeView: View {
     
     @State var createWeek : Bool = false
     @State var presentScreen : Bool = false
+    @State var pushScreen : Bool = false
     
-    @State var taskData : [taskModel] = sampleTask.sorted (by: { $0.taskDate > $1.taskDate})
+    @State var tempArray : [Tasks_data] = []
      
     //Animation namespace
     @Namespace private var animation
     
     @ObservedObject var viewModel = tasksViewModel()
+    @State var selectedTasks = Tasks_data()
+    
     
     var body: some View {
         ZStack{
@@ -84,7 +87,8 @@ struct homeView: View {
                             .shadow(color: .black.opacity(0.6), radius: 5, y: 5)
                     }
             }
-            .offset(x: 120 ,y: 320)
+            .offset(x: 140 ,y: 320)
+           
 
         }
         .onAppear(perform: {
@@ -108,6 +112,9 @@ struct homeView: View {
             newTaskScreen()
                 .presentationDetents([.large])
         })
+        .navigationDestination(isPresented: $pushScreen) {
+            detailTaskView(popScreen: $pushScreen, selectedTasks: $selectedTasks)
+        }
        
     }
     
@@ -186,21 +193,25 @@ struct homeView: View {
     
     @ViewBuilder
     func TaskViewFunc() -> some View {
-        
         VStack(alignment: .leading, spacing: 30, content: {
-            
             ForEach(viewModel.userTasksData.indices, id: \.self) { element in
-                TaskView(tasks: $viewModel.userTasksData[element], timeDistance: .constant(1))
-                    .overlay {
-                        if !(element == viewModel.userTasksData.count - 1) {
-                            RoundedRectangle(cornerRadius: 20)
-                                .frame(width: 2, height: 90)
-                                .offset(x: -87, y: 30)
-                                .foregroundStyle(Color.black)
+                if selectedDate.format("dd/MM/YYYY") == viewModel.userTasksData[element].createddate?.format("dd/MM/YYYY")  {
+                    TaskView(tasks: $viewModel.userTasksData[element], timeDistance: .constant(1))
+                        .overlay {
+                            if !(element == viewModel.userTasksData.count - 1) {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .frame(width: 2, height: 90)
+                                    .offset(x: -87, y: 30)
+                                    .foregroundStyle(Color.black)
+                            }
                         }
-                    }
-            }
-            
+                        .onTapGesture {
+                            pushScreen = true
+                            selectedTasks = viewModel.userTasksData[element]
+                        }
+                }
+            }  
+           
         })
         
     }

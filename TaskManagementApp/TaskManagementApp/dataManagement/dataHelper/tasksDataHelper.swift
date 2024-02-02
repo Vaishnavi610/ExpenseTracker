@@ -13,7 +13,7 @@ class tasksDataHelper : ObservableObject {
     
     static let shared = tasksDataHelper()
     
-    func createTasks (_ taksName: String, _ note: String, _ createdDate: Date, _ dueDate: Date, _ isCompleted : Bool, _ setAlram: Bool, _ alertValue: String, _ repeatValue : String, _ urlAttachment : String, _ viewContext : NSManagedObjectContext, completionHandler : @escaping (_ success : Bool)-> Void) {
+    func createTasks (_ taksName: String, _ note: String, _ createdDate: Date, _ dueDate: Date, _ isCompleted : Bool, _ setAlram: Bool, _ alertValue: String, _ repeatValue : String, _ urlAttachment : String, _ themeName : String ,_ viewContext : NSManagedObjectContext, completionHandler : @escaping (_ success : Bool)-> Void) {
         
         let taskObject = Tasks_data(context: viewContext)
         taskObject.taskaname = taksName
@@ -25,6 +25,7 @@ class tasksDataHelper : ObservableObject {
         taskObject.alertvalue = alertValue
         taskObject.repeatedvalue = repeatValue
         taskObject.urlattachement = URL(string: urlAttachment)
+        taskObject.themefortask = themeName
         
         do{
             try viewContext.save()
@@ -65,4 +66,14 @@ class tasksDataHelper : ObservableObject {
         
     }
     
+    func markAsComplete (_ event : Tasks_data, isCompleted : Bool, _ context: NSManagedObjectContext, completionHandler : @escaping(_ success : Bool)->Void){
+        
+        event.iscompletd = isCompleted
+        do{
+            try context.save()
+            completionHandler(true)
+        }catch{
+            completionHandler(false)
+        }
+    }
 }

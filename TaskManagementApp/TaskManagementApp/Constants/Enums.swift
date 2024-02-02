@@ -45,6 +45,25 @@ enum themeColor {
         }
     }
     
+    var colorValue : String {
+        switch self {
+        case .black:
+            "Black"
+        case .pink:
+            "pink"
+        case .skyBlue:
+            "skyBlue"
+        case .blue:
+            "blue"
+        case .brown:
+            "brown"
+        case .red:
+            "red"
+        case .purple:
+            "purple"
+        }
+    }
+    
 }
 
 
